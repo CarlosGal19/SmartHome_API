@@ -49,12 +49,14 @@ const statusCache = {
     bathroom: "0",
     patio: "0",
     door_1: "0",
-    door_2: "0",
     window_1: "0",
     window_2: "0",
     buzzer: "0",
 };
 
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 app.post("/alexa", async (req, res) => {
 
