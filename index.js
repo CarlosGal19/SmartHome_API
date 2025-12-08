@@ -71,8 +71,6 @@ app.post("/alexa", async (req, res) => {
 
     const alias = roomAlias || sensorAlias;
 
-    console.log(`Intent: ${intentName}, Room: ${room}, Sensor: ${sensor}`, `Room Alias: ${roomAlias}, Sensor Alias: ${sensorAlias}`, `Alias: ${alias}`);
-
     if (!intentName || (!room && !sensor) || (!topicSetters[room] && !topicSetters[sensor])) {
         return res.json({
             version: "1.0",
@@ -97,6 +95,7 @@ app.post("/alexa", async (req, res) => {
         newState = "0";
     }
 
+    console.log(topicSetters[room], newState);
     mqttClient.publish(topicSetters[room], newState);
     statusCache[room] = newState;
 
