@@ -70,6 +70,7 @@ app.post("/alexa", async (req, res) => {
     const sensor = intent?.slots?.sensor?.resolutions?.resolutionsPerAuthority?.[0]?.values?.[0]?.value?.name || '';
 
     const alias = roomAlias || sensorAlias;
+    const target = room || sensor;
 
     if (!intentName || (!room && !sensor) || (!topicSetters[room] && !topicSetters[sensor])) {
         return res.json({
@@ -95,9 +96,8 @@ app.post("/alexa", async (req, res) => {
         newState = "0";
     }
 
-    console.log(topicSetters[room], newState);
-    mqttClient.publish(topicSetters[room], newState);
-    statusCache[room] = newState;
+    mqttClient.publish(topicSetters[target], newState);
+    statusCache[target] = newState;
 
     return res.json({
         version: "1.0",
