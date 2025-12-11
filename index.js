@@ -27,6 +27,7 @@ const topicSetters = {
     'window_1': 'smarthome/window_1/set',
     'window_2': 'smarthome/window_2/set',
     'buzzer': 'smarthome/buzzer/set',
+    'servo': 'smarthome/servo/set',
 };
 
 const topicGetters = {
@@ -39,7 +40,8 @@ const topicGetters = {
     'door_2': 'smarthome/door_2/status',
     'window_1': 'smarthome/window_1/status',
     'window_2': 'smarthome/window_2/status',
-    'buzzer': 'smarthome/buzzer/status'
+    'buzzer': 'smarthome/buzzer/status',
+    'servo': 'smarthome/servo/status',
 };
 
 const statusCache = {
@@ -51,6 +53,8 @@ const statusCache = {
     door_1: "0",
     window_1: "0",
     window_2: "0",
+    door_2: "0",
+    servo: "0",
     buzzer: "0",
 };
 
